@@ -1,0 +1,35 @@
+I have a CSV (comma separated values) file containing large number of rows (about 15 million) and about one or two hundred columns. First row may be a header listing column names. First column contains observation ids -- they are strings, and their first four letters are digits which encode the year associated with the observation. Attached are 2 examples of CSV files illustrating file format: my_data_with_header.csv, my_data_without_header.csv.
+
+I need a C program which takes name of a CSV file as an input parameter, scans the file, and prints the following file statistics (example below is for my_data_with_header.csv):
+=======================================
+File: my_data_with_header.csv
+Header: present
+Rows: 11 (without header row)
+Columns: 6
+------------------------------------
+id years: 2010 - 2016
+Year  Rows
+2010  2
+2011  -
+2012  3
+2013  -
+2014  1
+2015  1
+2016  4
+-------------------------------------
+Columns
+#  Name      Description
+1  obs_id      Customer id
+2  feature1   Hair color
+3  Kilo         Weight in kilograms
+4  Lima       Car model
+5  AD150     Customer score 1
+6  AD151      [not found]
+=====================================
+
+Additional notes.
+1. If file has header, print section with information about columns. Description of columns is taken from file "columns_global.tsv" (tab separated values; files attached). If column is not found in that file, print "[not found]" in the description.
+2. The stats is also saved in a text file (for example my_data_with_header.csv.info)
+3. Important. I need this program to work fast on large files -- about the same time as "wc -l" Linux command, or faster. Please test performance of your program on a file with 10 million rows. 
+
+
